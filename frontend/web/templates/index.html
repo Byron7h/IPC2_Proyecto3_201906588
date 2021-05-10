@@ -15,9 +15,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <button type="button" class="btn btn-secundary">Cargar archivo</button>
-        <button type="button" class="btn btn-secundary">Mostrar estadísticas</button>
-        <button type="button" class="btn btn-secundary">Reset</button>
+        <button id = "Cargar_Archivo" type="button" class="btn btn-secundary">Cargar archivo</button>
+        <button id ="Carga_Estadisticas" type="button" class="btn btn-secundary">Mostrar estadísticas</button>
+        <button id ="Reset" type="button" class="btn btn-secundary">Reset</button>
       </div>
     </div>
   </div>
@@ -60,11 +60,54 @@
   <div class="row">
     <div class="col-sm">
         <h1>Entrada</h1>
+        <div id = "Entrada"></div>
     </div>
     <div class="col-sm">
         <h1>Salida</h1>
     </div>
   </div>
 </div>
+
+
+<script>
+  let Entrada = document.getElementById("Entrada");
+  let Cargar_Archivo = document.getElementById("Cargar_Archivo");
+
+  Cargar_Archivo.addEventListener("click", (e) => {
+    e.preventDefault();
+    fetch("http://localhost:3000//Leer_Documento",{
+      method: "POST",
+      body: JSON.stringify({"ruta" : "C:/Users/usuario/Documents/Byron/5TO SEMESTRE/IPC2/Lab/Proyecto_Final/IPC2_Proyecto3_201906588/Entrada.xml"}),
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((res)=>{
+
+        Entrada.innerText = res.cadena    
+        
+
+      })
+
+
+
+  }
+  
+  )
+
+	
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
     </body>
 </html>
